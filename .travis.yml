@@ -22,4 +22,14 @@ branches:
     - master
 
 script:
-  - npm test
+  - npm run build
+  
+deploy:
+  skip_cleanup: true # required to keep the build artefacts
+  provider: pages
+  github_token: $GITHUB_TOKEN # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  local_dir: dist
+  on:
+    branch: master
+
